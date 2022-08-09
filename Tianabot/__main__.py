@@ -110,11 +110,7 @@ buttons = [
     ], 
        [  
         InlineKeyboardButton(text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"),
-    ], 
-    
-        [  
-        InlineKeyboardButton(text="💫 𝗦𝘂𝗿𝘆𝗮 𝗠𝘂𝘀𝗶𝗰 𝗕𝗼𝘁 💫", url=f"https://t.me/Surya_MusicBot?startgroup=true"),
-    ], 
+    ],
     
 ]
 
@@ -404,10 +400,6 @@ def tiana_callback_handler(update, context):
                         [  
         InlineKeyboardButton(text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"),
     ], 
-    
-        [  
-        InlineKeyboardButton(text="💫 𝗦𝘂𝗿𝘆𝗮 𝗠𝘂𝘀𝗶𝗰 𝗕𝗼𝘁 💫", url=f"https://t.me/Surya_MusicBot?startgroup=true"),
-    ], 
                 ]
             ),
         )
@@ -567,10 +559,6 @@ Cʟɪᴄᴋ  Bᴇʟᴏᴡ  Bᴜᴛᴛᴏɴ  Tᴏ  Aᴅᴅ  Bᴏᴛ  Iɴ  Yᴏᴜ
                     [  
         InlineKeyboardButton(text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"),
     ], 
-    
-        [  
-        InlineKeyboardButton(text="💫 𝗦𝘂𝗿𝘆𝗮 𝗠𝘂𝘀𝗶𝗰 𝗕𝗼𝘁 💫", url=f"https://t.me/Surya_MusicBot?startgroup=true"),
-    ], 
               ]
             ),
         )
@@ -694,10 +682,6 @@ Aɢᴀɪɴ  Tʜᴀɴᴋs  Fᴏʀ  Usɪɴɢ  Mᴇ
                 InlineKeyboardButton(text="𝙈𝙖𝙞𝙣 𝙈𝙚𝙣𝙪", callback_data="tiana_")],
                    [  
         InlineKeyboardButton(text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"),
-    ], 
-    
-        [  
-        InlineKeyboardButton(text="💫 𝗦𝘂𝗿𝘆𝗮 𝗠𝘂𝘀𝗶𝗰 𝗕𝗼𝘁 💫", url=f"https://t.me/Surya_MusicBot?startgroup=true"),
     ]]
             ),
         )
