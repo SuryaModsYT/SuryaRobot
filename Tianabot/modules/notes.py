@@ -1,15 +1,16 @@
-import re, ast, random
+import re, ast
 from io import BytesIO
 from typing import Optional
 
 import Tianabot.modules.sql.notes_sql as sql
-from Tianabot import LOGGER, dispatcher, DRAGONS
+from Tianabot import LOGGER, JOIN_LOGGER, SUPPORT_CHAT, dispatcher, DRAGONS
 from Tianabot.modules.disable import DisableAbleCommandHandler
-from Tianabot.modules.helper_funcs.chat_status import connection_status
+from Tianabot.modules.helper_funcs.chat_status import user_admin, connection_status
 from Tianabot.modules.helper_funcs.misc import build_keyboard, revert_buttons
 from Tianabot.modules.helper_funcs.msg_types import get_note_type
-from Tianabot.modules.helper_funcs.handlers import MessageHandlerChecker
-from Tianabot.modules.helper_funcs.string_handling import escape_invalid_curly_brackets
+from Tianabot.modules.helper_funcs.string_handling import (
+    escape_invalid_curly_brackets,
+)
 from telegram import (
     MAX_MESSAGE_LENGTH,
     InlineKeyboardMarkup,
@@ -27,11 +28,8 @@ from telegram.ext import (
     Filters,
     MessageHandler,
 )
+from telegram.ext.dispatcher import run_async
 
-
-from ..modules.helper_funcs.anonymous import user_admin, AdminPerms
-
-JOIN_LOGGER = None
 FILE_MATCHER = re.compile(r"^###file_id(!photo)?###:(.*?)(?:\s|$)")
 STICKER_MATCHER = re.compile(r"^###sticker(!photo)?###:")
 BUTTON_MATCHER = re.compile(r"^###button(!photo)?###:(.*?)(?:\s|$)")
@@ -55,51 +53,51 @@ ENUM_FUNC_MAP = {
 
 
 # Do not async
+@connection_status
 def get(update, context, notename, show_none=True, no_format=False):
-    # sourcery no-metrics
     bot = context.bot
-    chat_id = update.effective_message.chat.id
-    note_chat_id = update.effective_chat.id
-    note = sql.get_note(note_chat_id, notename)
+    chat_id = update.effective_chat.id
+    note = sql.get_note(chat_id, notename)
     message = update.effective_message  # type: Optional[Message]
 
     if note:
-        if MessageHandlerChecker.check_user(update.effective_user.id):
-            return
         # If we're replying to a message, reply to that message (unless it's an error)
         if message.reply_to_message:
             reply_id = message.reply_to_message.message_id
         else:
             reply_id = message.message_id
+
         if note.is_reply:
             if JOIN_LOGGER:
                 try:
                     bot.forward_message(
-                        chat_id=chat_id, from_chat_id=JOIN_LOGGER, message_id=note.value,
+                        chat_id=chat_id, from_chat_id=JOIN_LOGGER, message_id=note.value
                     )
                 except BadRequest as excp:
-                    if excp.message != "Message to forward not found":
+                    if excp.message == "Message to forward not found":
+                        message.reply_text(
+                            "This message seems to have been lost - I'll remove it "
+                            "from your notes list."
+                        )
+                        sql.rm_note(chat_id, notename)
+                    else:
                         raise
-                    message.reply_text(
-                        "This message seems to have been lost - I'll remove it "
-                        "from your notes list.",
-                    )
-                    sql.rm_note(note_chat_id, notename)
             else:
                 try:
                     bot.forward_message(
-                        chat_id=chat_id, from_chat_id=chat_id, message_id=note.value,
+                        chat_id=chat_id, from_chat_id=chat_id, message_id=note.value
                     )
                 except BadRequest as excp:
-                    if excp.message != "Message to forward not found":
+                    if excp.message == "Message to forward not found":
+                        message.reply_text(
+                            "Looks like the original sender of this note has deleted "
+                            "their message - sorry! Get your bot admin to start using a "
+                            "message dump to avoid this. I'll remove this note from "
+                            "your saved notes."
+                        )
+                        sql.rm_note(chat_id, notename)
+                    else:
                         raise
-                    message.reply_text(
-                        "Looks like the original sender of this note has deleted "
-                        "their message - sorry! Get your bot admin to start using a "
-                        "message dump to avoid this. I'll remove this note from "
-                        "your saved notes.",
-                    )
-                    sql.rm_note(note_chat_id, notename)
         else:
             VALID_NOTE_FORMATTERS = [
                 "first",
@@ -111,38 +109,33 @@ def get(update, context, notename, show_none=True, no_format=False):
                 "mention",
             ]
             valid_format = escape_invalid_curly_brackets(
-                note.value, VALID_NOTE_FORMATTERS,
+                note.value, VALID_NOTE_FORMATTERS
             )
             if valid_format:
-                if not no_format and "%%%" in valid_format:
-                    split = valid_format.split("%%%")
-                    text = random.choice(split) if all(split) else valid_format
-                else:
-                    text = valid_format
-                text = text.format(
+                text = valid_format.format(
                     first=escape_markdown(message.from_user.first_name),
                     last=escape_markdown(
-                        message.from_user.last_name or message.from_user.first_name,
+                        message.from_user.last_name or message.from_user.first_name
                     ),
                     fullname=escape_markdown(
                         " ".join(
                             [message.from_user.first_name, message.from_user.last_name]
                             if message.from_user.last_name
-                            else [message.from_user.first_name],
-                        ),
+                            else [message.from_user.first_name]
+                        )
                     ),
                     username="@" + message.from_user.username
                     if message.from_user.username
                     else mention_markdown(
-                        message.from_user.id, message.from_user.first_name,
+                        message.from_user.id, message.from_user.first_name
                     ),
                     mention=mention_markdown(
-                        message.from_user.id, message.from_user.first_name,
+                        message.from_user.id, message.from_user.first_name
                     ),
                     chatname=escape_markdown(
                         message.chat.title
                         if message.chat.type != "private"
-                        else message.from_user.first_name,
+                        else message.from_user.first_name
                     ),
                     id=message.from_user.id,
                 )
@@ -151,7 +144,7 @@ def get(update, context, notename, show_none=True, no_format=False):
 
             keyb = []
             parseMode = ParseMode.MARKDOWN
-            buttons = sql.get_buttons(note_chat_id, notename)
+            buttons = sql.get_buttons(chat_id, notename)
             if no_format:
                 parseMode = None
                 text += revert_buttons(buttons)
@@ -170,13 +163,6 @@ def get(update, context, notename, show_none=True, no_format=False):
                         disable_web_page_preview=True,
                         reply_markup=keyboard,
                     )
-                elif ENUM_FUNC_MAP[note.msgtype] == dispatcher.bot.send_sticker:
-                    ENUM_FUNC_MAP[note.msgtype](
-                        chat_id,
-                        note.file,
-                        reply_to_message_id=reply_id,
-                        reply_markup=keyboard,
-                    )
                 else:
                     ENUM_FUNC_MAP[note.msgtype](
                         chat_id,
@@ -184,6 +170,7 @@ def get(update, context, notename, show_none=True, no_format=False):
                         caption=text,
                         reply_to_message_id=reply_id,
                         parse_mode=parseMode,
+                        disable_web_page_preview=True,
                         reply_markup=keyboard,
                     )
 
@@ -207,7 +194,7 @@ def get(update, context, notename, show_none=True, no_format=False):
                         f"@{SUPPORT_CHAT} if you can't figure out why!"
                     )
                     LOGGER.exception(
-                        "Could not parse message #%s in chat %s", notename, str(note_chat_id)
+                        "Could not parse message #%s in chat %s", notename, str(chat_id)
                     )
                     LOGGER.warning("Message was: %s", str(note.value))
         return
@@ -248,15 +235,12 @@ def slash_get(update: Update, context: CallbackContext):
         update.effective_message.reply_text("Wrong Note ID 😾")
 
 
-@user_admin(AdminPerms.CAN_CHANGE_INFO)
+@user_admin
 @connection_status
 def save(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     msg = update.effective_message  # type: Optional[Message]
-    m = msg.text.split(' ', 1)
-    if len(m) == 1:
-        msg.reply_text("Provide something to save.")
-        return
+
     note_name, text, data_type, content, buttons = get_note_type(msg)
     note_name = note_name.lower()
     if data_type is None:
@@ -289,7 +273,8 @@ def save(update: Update, context: CallbackContext):
             )
         return
 
-@user_admin(AdminPerms.CAN_CHANGE_INFO)
+
+@user_admin
 @connection_status
 def clear(update: Update, context: CallbackContext):
     args = context.args
@@ -301,8 +286,6 @@ def clear(update: Update, context: CallbackContext):
             update.effective_message.reply_text("Successfully removed note.")
         else:
             update.effective_message.reply_text("That's not a note in my database!")
-    else:
-        update.effective_message.reply_text("Provide a notename.")
 
 
 def clearall(update: Update, context: CallbackContext):
@@ -385,7 +368,7 @@ def list_notes(update: Update, context: CallbackContext):
         update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
 
 
-def __import_data__(chat_id, data):  # sourcery no-metrics
+def __import_data__(chat_id, data):
     failures = []
     for notename, notedata in data.get("extra", {}).items():
         match = FILE_MATCHER.match(notedata)
@@ -504,44 +487,39 @@ def __chat_settings__(chat_id, user_id):
     notes = sql.get_all_chat_notes(chat_id)
     return f"There are `{len(notes)}` notes in this chat."
 
+
 __help__ = """
- ❍ /get <notename>*:* get the note with this notename
- ❍ #<notename>*:* same as /get
- ❍ /notes or /saved*:* list all saved notes in this chat
- ❍ /number *:* Will pull the note of that number in the list
+
+ ❍ `/get <notename>`*:* get the note with this notename
+ ❍ `#<notename>`*:* same as /get
+ ❍ `/notes` or `/saved`*:* list all saved notes in this chat
+ ❍ `/number` *:* Will pull the note of that number in the list. 
 If you would like to retrieve the contents of a note without any formatting, use `/get <notename> noformat`. This can \
-be useful when updating a current note
+be useful when updating a current note.
+
 *Admins only:*
- ❍ /save <notename> <notedata>*:* saves notedata as a note with name notename
+ ❍ `/save <notename> <notedata>`*:* saves notedata as a note with name notename
 A button can be added to a note by using standard markdown link syntax - the link should just be prepended with a \
-`buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check `/markdownhelp` for more info
- ❍ /save <notename>*:* save the replied message as a note with name notename
- Separate diff replies by `%%%` to get random notes
- *Example:* 
- `/save notename
- Reply 1
- %%%
- Reply 2
- %%%
- Reply 3`
- ❍ /clear <notename>*:* clear note with this name
- ❍ /removeallnotes*:* removes all notes from the group
+`buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check `/markdownhelp` for more info.
+ ❍ `/save <notename>`*:* save the replied message as a note with name notename
+ ❍ `/clear <notename>`*:* clear note with this name
+ ❍ `/removeallnotes`*:* removes all notes from the group
  *Note:* Note names are case-insensitive, and they are automatically converted to lowercase before getting saved.
 """
 
-__mod_name__ = "Nᴏᴛᴇs"
+__mod_name__ = "Notes"
 
-GET_HANDLER = CommandHandler("get", cmd_get)
-HASH_GET_HANDLER = MessageHandler(Filters.regex(r"^#[^\s]+"), hash_get)
-SLASH_GET_HANDLER = MessageHandler(Filters.regex(r"^/\d+$"), slash_get)
-SAVE_HANDLER = CommandHandler("save", save)
-DELETE_HANDLER = CommandHandler("clear", clear)
+GET_HANDLER = CommandHandler("get", cmd_get, run_async=True)
+HASH_GET_HANDLER = MessageHandler(Filters.regex(r"^#[^\s]+"), hash_get, run_async=True)
+SLASH_GET_HANDLER = MessageHandler(Filters.regex(r"^/\d+$"), slash_get, run_async=True)
+SAVE_HANDLER = CommandHandler("save", save, run_async=True)
+DELETE_HANDLER = CommandHandler("clear", clear, run_async=True)
 
-LIST_HANDLER = DisableAbleCommandHandler(["notes", "saved"], list_notes, admin_ok=True)
+LIST_HANDLER = DisableAbleCommandHandler(["notes", "saved"], list_notes, admin_ok=True, run_async=True)
 
-CLEARALL = DisableAbleCommandHandler("removeallnotes", clearall)
-CLEARALL_BTN = CallbackQueryHandler(clearall_btn, pattern=r"notes_.*")
-
+CLEARALL = DisableAbleCommandHandler("removeallnotes", clearall, run_async=True)
+CLEARALL_BTN = CallbackQueryHandler(clearall_btn, pattern=r"notes_.*", run_async=True)
+run_async=True
 dispatcher.add_handler(GET_HANDLER)
 dispatcher.add_handler(SAVE_HANDLER)
 dispatcher.add_handler(LIST_HANDLER)
@@ -550,5 +528,3 @@ dispatcher.add_handler(HASH_GET_HANDLER)
 dispatcher.add_handler(SLASH_GET_HANDLER)
 dispatcher.add_handler(CLEARALL)
 dispatcher.add_handler(CLEARALL_BTN)
-
-__mod_name__ = "Notes"
