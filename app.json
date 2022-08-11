@@ -44,6 +44,11 @@
          "required": true,
          "value": "6415310"
       },
+      "AFK_DB_URI": {
+         "description": "Optional: link where you may add separate mongo db for afk module",
+         "required": false,
+         "value": ""
+      },
       "API_HASH": {
          "description": "Get API_HASH from my.telegram.org, used for telethon based modules.",
          "required": true,
@@ -53,7 +58,12 @@
          "description": "Your postgres sql db, empty this field if you dont have one.",
          "required": false,
          "value": ""
-      },      
+      },  
+      "NO_LOAD": {
+         "description": "Optional: Where You May Declare Which Modules Will not be Loaded",
+         "required": false,
+         "value": "RSS"
+      },       
       "OWNER_ID": {
          "description": "Your user ID as an integer.",
          "required": true,
