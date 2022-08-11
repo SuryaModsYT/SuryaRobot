@@ -1080,7 +1080,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@SuryaBotsSupport", "𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁 𝙎𝙐𝘾𝘾𝙀𝙎𝙁𝙐𝙇𝙇𝙔✅")
+            dispatcher.bot.sendMessage(f"@SuryaBotsSupport", "𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁 𝗦𝘁𝗮𝗿𝘁𝗲𝗱 𝗦𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 ✅")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
@@ -1126,7 +1126,7 @@ def main():
             updater.bot.set_webhook(url=URL + TOKEN)
 
     else:
-        LOGGER.info("Started Successfully")
+        LOGGER.info("SuryaRobot Started Successfully")
         updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
 
     if len(argv) not in (1, 3, 4):
