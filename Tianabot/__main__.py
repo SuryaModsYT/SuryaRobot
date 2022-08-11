@@ -110,7 +110,11 @@ buttons = [
     ], 
        [  
         InlineKeyboardButton(text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"),
-    ],
+    ], 
+    
+        [  
+        InlineKeyboardButton(text="💫 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩 𝙍𝙚𝙥𝙤 💫", url=f"https://github.com/SuryaModsYT/SuryaModsMusicBot"),
+    ], 
     
 ]
 
@@ -400,6 +404,10 @@ def tiana_callback_handler(update, context):
                         [  
         InlineKeyboardButton(text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"),
     ], 
+    
+        [  
+        InlineKeyboardButton(text="💫 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩 𝙍𝙚𝙥𝙤 💫", url=f"https://github.com/SuryaModsYT/SuryaModsMusicBot"),
+    ],
                 ]
             ),
         )
@@ -559,6 +567,10 @@ Cʟɪᴄᴋ  Bᴇʟᴏᴡ  Bᴜᴛᴛᴏɴ  Tᴏ  Aᴅᴅ  Bᴏᴛ  Iɴ  Yᴏᴜ
                     [  
         InlineKeyboardButton(text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"),
     ], 
+    
+       [  
+        InlineKeyboardButton(text="💫 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩 𝙍𝙚𝙥𝙤 💫", url=f"https://github.com/SuryaModsYT/SuryaModsMusicBot"),
+    ],
               ]
             ),
         )
@@ -682,6 +694,10 @@ Aɢᴀɪɴ  Tʜᴀɴᴋs  Fᴏʀ  Usɪɴɢ  Mᴇ
                 InlineKeyboardButton(text="𝙈𝙖𝙞𝙣 𝙈𝙚𝙣𝙪", callback_data="tiana_")],
                    [  
         InlineKeyboardButton(text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"),
+    ], 
+    
+        [  
+        InlineKeyboardButton(text="💫 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩 𝙍𝙚𝙥𝙤 💫", url=f"https://github.com/SuryaModsYT/SuryaModsMusicBot"),
     ]]
             ),
         )
@@ -693,9 +709,7 @@ Bot Admins
                        
 • @{OWNER_USERNAME}, bot creator and main developer.
             
-• The Doctor, server manager and developer.
-            
-• Manuel 5, developer.
+• MAYBE SURAJ
             
 Support
             
@@ -1066,7 +1080,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@SuryaBotsSupport", "𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁 𝗦𝘁𝗮𝗿𝘁𝗲𝗱 𝗦𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆✅")
+            dispatcher.bot.sendMessage(f"@SuryaBotsSupport", "𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁 𝙎𝙐𝘾𝘾𝙀𝙎𝙁𝙐𝙇𝙇𝙔✅")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
