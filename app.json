@@ -29,6 +29,11 @@
          "required": true,
          "value": ""
       },
+      "AFK_DB_URI": {
+         "description": "Optional: link where you may add separate mongo db for afk module",
+         "required": false,
+         "value": ""
+      },
       "API_HASH": {
          "description": "Get this value from my.telegram.org/apps.",
          "required": true,
@@ -38,7 +43,12 @@
          "description": "Your postgres sql db, Leave this field empty if you don't have one.",
          "required": false,
          "value": ""
-      },      
+      },  
+      "NO_LOAD": {
+         "description": "Optional: Where You May Declare Which Modules Will not be Loaded",
+         "required": false,
+         "value": "RSS"
+      },       
       "OWNER_ID": {
          "description": "Your user ID as an integer.",
          "required": true,
