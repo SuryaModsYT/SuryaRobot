@@ -31,13 +31,17 @@ async def repo(client, message):
                         "• ᴏᴡɴᴇʀ •", url=f"https://t.me/{OWNER_USERNAME}"
                     ),
                 ],
-       [  
-        InlineKeyboardButton(text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"),
-    ], 
-    
-        [  
-        InlineKeyboardButton(text="💫 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩 𝙍𝙚𝙥𝙤 💫", url=f"https://github.com/SuryaModsYT/SuryaModsMusicBot"),
-    ]
+                [
+                    InlineKeyboardButton(
+                        text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="💫 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩 𝙍𝙚𝙥𝙤 💫",
+                        url=f"https://github.com/SuryaModsYT/SuryaModsMusicBot",
+                    ),
+                ],
             ]
         ),
     )
