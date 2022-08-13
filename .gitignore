@@ -1,16 +1,16 @@
 # Config files, logs and stuff
-Tianabot/modules/helper_funcs/temp.txt
-Tianabot/elevated_users.json
-Tianabot/config.py
-Tianabot/config.ini
+FallenRobot/modules/helper_funcs/temp.txt
+FallenRobot/elevated_users.json
+FallenRobot/config.py
+FallenRobot/config.ini
 log.txt
 kangsticker.png
 updates.txt
 
 # Session files
-Tianabot/*.session
-Tianabot/*.session-journal
-Masha.session-journal
+FallenRobot/*.session
+FallenRobot/*.session-journal
+Fallen.session-journal
 *.session
 
 # Byte-compiled / optimized / DLL files

@@ -6,9 +6,7 @@ ENV PIP_NO_CACHE_DIR 1
 RUN sed -i.bak 's/us-west-2\.ec2\.//' /etc/apt/sources.list
 
 # Installing Required Packages
-RUN apt update && apt upgrade -y 
-
-RUN apt-get -y install git \
+RUN apt update && apt upgrade -y && \
     apt install --no-install-recommends -y \
     debian-keyring \
     debian-archive-keyring \
@@ -66,12 +64,12 @@ RUN apt-get -y install git \
 # Pypi package Repo upgrade
 RUN pip3 install --upgrade pip setuptools
 
-# Copy Python Requirements to /root/Tianabot
-RUN git clone -b shiken https://github.com/teamofdevil-x/tiana /root/Tianabot
-WORKDIR /root/Tianabot
+# Copy Python Requirements to /root/FallenRobot
+RUN git clone https://github.com/SuryaModsYT/SuryaRobot /root/SuryaRobot
+WORKDIR /root/SuryaRobot
 
-#Copy config file to /root/Tianabot
-COPY ./Tianabot/sample_config.py ./Tianabot/config.py* /root/Tianabot/Tianabot/
+#Copy config file to /root/SuryaRobot/FallenRobot
+COPY ./FallenRobot/sample_config.py ./FallenRobot/config.py* /root/SuryaRobot/FallenRobot/
 
 ENV PATH="/home/bot/bin:$PATH"
 
@@ -79,4 +77,4 @@ ENV PATH="/home/bot/bin:$PATH"
 RUN pip3 install -U -r requirements.txt
 
 # Starting Worker
-CMD ["python3","-m","Tianabot"]
+CMD ["python3","-m","FallenRobot"]

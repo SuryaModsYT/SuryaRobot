@@ -1,4 +1,4 @@
 @echo off
-TITLE TIANA BOT
-:: Enables virtual env mode and then starts Tiana
-env\scripts\activate.bat && py -m Tianabot
+TITLE Fallen Robot
+:: Enables virtual env mode and then starts Fallen
+env\scripts\activate.bat && py -m FallenRobot
