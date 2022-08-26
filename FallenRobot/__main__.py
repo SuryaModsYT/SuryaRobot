@@ -103,17 +103,7 @@ buttons = [
             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
         ),
     ],
-    [
-        InlineKeyboardButton(
-            text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️", url=f"https://t.me/FRIENDS4EVERCHAT"
-        ),
-    ],
-    [
-        InlineKeyboardButton(
-            text="💫 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩 𝙍𝙚𝙥𝙤 💫",
-            url=f"https://github.com/SuryaModsYT/SuryaModsMusicBot",
-        ),
-    ],
+    
     [
         InlineKeyboardButton(text="ʜᴇʟᴩ & ᴄᴏᴍᴍᴀɴᴅs", callback_data="help_back"),
     ],
@@ -419,18 +409,7 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
                             text="ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"
                         ),
                     ],
-                    [
-                        InlineKeyboardButton(
-                            text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️",
-                            url=f"https://t.me/FRIENDS4EVERCHAT",
-                        ),
-                    ],
-                    [
-                        InlineKeyboardButton(
-                            text="💫 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩 𝙍𝙚𝙥𝙤 💫",
-                            url=f"https://github.com/SuryaModsYT/SuryaModsMusicBot",
-                        ),
-                    ],
+                   
                     [
                         InlineKeyboardButton(text="◁", callback_data="fallen_back"),
                     ],
@@ -446,7 +425,7 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="📇 𝙐𝙥𝙙𝙖𝙩𝙚𝙨", url=f"https://t.me/SuryaBots"
+                            text="📇 𝙐𝙥𝙙𝙖𝙩𝙚𝙨", url=f"https://t.me/dragomanagement_bot"
                         ),
                         InlineKeyboardButton(
                             text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂", url=f"https://t.me/SuryaBotsSupport"
