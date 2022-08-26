@@ -94,8 +94,8 @@ PM_START_TEXT = """
 
 buttons = [
     [
-        InlineKeyboardButton(text="📇 𝙐𝙥𝙙𝙖𝙩𝙚𝙨", url=f"https://t.me/SuryaBots"),
-        InlineKeyboardButton(text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂", url=f"https://t.me/SuryaBotsSupport"),
+        InlineKeyboardButton(text="📇 𝙐𝙥𝙙𝙖𝙩𝙚𝙨", url=f"https://t.me/dragomanagement_bot"),
+        InlineKeyboardButton(text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂", url=f"https://t.me/dragomanagement_bot_chat"),
     ],
     [
         InlineKeyboardButton(
@@ -125,7 +125,7 @@ HELP_STRINGS = f"""
 DONATE_STRING = """ʜᴇʏ ʙᴀʙʏ,
   ʜᴀᴩᴩʏ ᴛᴏ ʜᴇᴀʀ ᴛʜᴀᴛ ʏᴏᴜ ᴡᴀɴɴᴀ ᴅᴏɴᴀᴛᴇ.
 
-ʏᴏᴜ ᴄᴀɴ ᴅɪʀᴇᴄᴛʟʏ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ [ᴅᴇᴠᴇʟᴏᴩᴇʀ](https://t.me/SuryaModOwner) ғᴏʀ ᴅᴏɴᴀᴛɪɴɢ ᴏʀ ʏᴏᴜ ᴄᴀɴ ᴠɪsɪᴛ ᴍʏ [sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ](https://t.me/SuryaBotsSupport) ᴀɴᴅ ᴀsᴋ ᴛʜᴇʀᴇ ᴀʙᴏᴜᴛ ᴅᴏɴᴀᴛɪᴏɴ."""
+ʏᴏᴜ ᴄᴀɴ ᴅɪʀᴇᴄᴛʟʏ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ [ᴅᴇᴠᴇʟᴏᴩᴇʀ](https://t.me/god_dragoop) ғᴏʀ ᴅᴏɴᴀᴛɪɴɢ ᴏʀ ʏᴏᴜ ᴄᴀɴ ᴠɪsɪᴛ ᴍʏ [sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ](https://t.me/dragomanagement_bot_chat) ᴀɴᴅ ᴀsᴋ ᴛʜᴇʀᴇ ᴀʙᴏᴜᴛ ᴅᴏɴᴀᴛɪᴏɴ."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -428,7 +428,7 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
                             text="📇 𝙐𝙥𝙙𝙖𝙩𝙚𝙨", url=f"https://t.me/dragomanagement_bot"
                         ),
                         InlineKeyboardButton(
-                            text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂", url=f"https://t.me/SuryaBotsSupport"
+                            text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂", url=f"https://t.me/dragomanagement_bot_chat"
                         ),
                     ],
                     [
@@ -437,27 +437,12 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
                             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                         ),
                     ],
-                    [
-                        InlineKeyboardButton(
-                            text="💙 𝗖𝗵𝗮𝘁𝘁𝗶𝗻𝗴 𝗛𝘂𝗯 💙️",
-                            url=f"https://t.me/FRIENDS4EVERCHAT",
-                        ),
-                    ],
-                    [
-                        InlineKeyboardButton(
-                            text="💫 𝙈𝙪𝙨𝙞𝙘 𝘽𝙤𝙩 𝙍𝙚𝙥𝙤 💫",
-                            url=f"https://github.com/SuryaModsYT/SuryaModsMusicBot",
-                        ),
-                    ],
+                
                     [
                         InlineKeyboardButton(
                             text="ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"
                         ),
-                        InlineKeyboardButton(
-                            text="ɢɪᴛʜᴜʙ",
-                            callback_data="https://github.com/SuryaModsYT",
-                        ),
-                    ],
+                       ],
                     [
                         InlineKeyboardButton(text="◁", callback_data="fallen_"),
                     ],
