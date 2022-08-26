@@ -729,7 +729,7 @@ def donate(update: Update, context: CallbackContext):
 
         if OWNER_ID != 5043850742 and DONATION_LINK:
             update.effective_message.reply_text(
-                f"» ᴛʜᴇ ᴅᴇᴠᴇʟᴏᴩᴇʀ ᴏғ @SuryaModOwner"
+                f"» ᴛʜᴇ ᴅᴇᴠᴇʟᴏᴩᴇʀ ᴏғ @GOD_DRAGOOP"
                 f"\n\nʙᴜᴛ ʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ ᴅᴏɴᴀᴛᴇ ᴛᴏ ᴛʜᴇ ᴩᴇʀsᴏɴ ᴄᴜʀʀᴇɴᴛʟʏ ʀᴜɴɴɪɴɢ ᴍᴇ : [ʜᴇʀᴇ]({DONATION_LINK})",
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
@@ -778,7 +778,7 @@ def main():
         try:
             dispatcher.bot.sendAnimation(
                 f"@{SUPPORT_CHAT}",
-                animation="https://telegra.ph/file/586b77d6858478d7ce683.jpg",
+                animation="https://te.legra.ph/file/e9cd86354156a1bd92673.jpg",
                 caption=f"""
 ㅤㅤ🥀 {BOT_NAME} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ...
 
@@ -789,7 +789,7 @@ def main():
 ㅤ๏ **ᴩʏʀᴏɢʀᴀᴍ :** `{pyrover}`
 ━━━━━━━━━━━━━
 
-ᴍᴀᴅᴇ ᴡɪᴛʜ 💖💫 ʙʏ [𝗦𝗨𝗥𝗬𝗔](https://t.me/SuryaModOwner)""",
+ᴍᴀᴅᴇ ᴡɪᴛʜ 💖💫 ʙʏ [𝗦𝗨𝗥𝗬𝗔](https://t.me/GOD_DRAGOOP)""",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
