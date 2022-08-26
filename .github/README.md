@@ -12,7 +12,7 @@
     
 # 𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁
 #### 𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁 is a Telegram group managment bot made using Telethon and Pyrogram which makes it modern and faster than most of the exisitng Telegram Chat Managers.
-<p align="center"><img src="https://telegra.ph/file/586b77d6858478d7ce683.jpg"></p>
+<p align="center"><img src="https://te.legra.ph/file/e9cd86354156a1bd92673.jpg"></p>
 
 #### 𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁 features over other bots:
 - Modern
