@@ -10,11 +10,11 @@
     <a href="https://t.me/spideyxSupport"> Support Chat </a> 
 </p>
     
-# 𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁
-#### 𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁 is a Telegram group managment bot made using Telethon and Pyrogram which makes it modern and faster than most of the exisitng Telegram Chat Managers.
+# 𝗗𝗥𝗔𝗚𝗢 𝗢𝗣
+#### 𝗗𝗥𝗔𝗚𝗢 𝗢𝗣 is a Telegram group managment bot made using Telethon and Pyrogram which makes it modern and faster than most of the exisitng Telegram Chat Managers.
 <p align="center"><img src="https://te.legra.ph/file/e9cd86354156a1bd92673.jpg"></p>
 
-#### 𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁 features over other bots:
+#### 𝗗𝗥𝗔𝗚𝗢 𝗢𝗣 features over other bots:
 - Modern
 - Fast
 - Fully open-source
@@ -52,7 +52,7 @@ It really motivates me to continue this project further
 > By setting those two vars you can get logs of your heroku app, set var, edit var, delete vars , check dyno usage and update bot. 
 > Those two vars are not Mandatory! You can leave them blank too. 
     
-<h4>Click the button below to deploy 𝗦𝘂𝗿𝘆𝗮 𝗥𝗼𝗯𝗼𝘁 Group Managment Bot on Heroku!</h4>    
+<h4>Click the button below to deploy 𝗗𝗥𝗔𝗚𝗢 𝗢𝗣 Group Managment Bot on Heroku!</h4>    
 <p><a href="https://heroku.com/deploy?template=https://github.com/SuryaModsYT/SuryaRobot"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="200""/></a></p>
 
 <h4>Click the button below to deploy 𝗦𝘂𝗿𝘆𝗮 Music Bot on Heroku!</h4>    
@@ -71,14 +71,14 @@ $ bash start
 
 ## Contact & Support
 
-- [Telegram Channel](https://t.me/suryabots)
-- [Telegram Support Group](https://t.me/SuryaBotsSupport)
-- [Contact Owner](https://telegram.me/SuryaModOwner)
+- [Telegram Channel](https://t.me/dragomanagement_bot)
+- [Telegram Support Group](https://t.me/dragomanagement_bot_chat)
+- [Contact Owner](https://telegram.me/god_dragoop)
 
 
 ## Acknowledgements
 
 Special thanks to these amazing projects/people which/who help power spidey Bot:
 
-- [suraj](https://t.me/consolelogsuraj)
+- [GOD_DRAGOOP](https://t.me/god_dragoop)
 - [Surya](https://t.me/SuryaModOwner)
