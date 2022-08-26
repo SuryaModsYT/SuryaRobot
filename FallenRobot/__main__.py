@@ -95,7 +95,9 @@ PM_START_TEXT = """
 buttons = [
     [
         InlineKeyboardButton(text="📇 𝙐𝙥𝙙𝙖𝙩𝙚𝙨", url=f"https://t.me/dragomanagement_bot"),
-        InlineKeyboardButton(text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂", url=f"https://t.me/dragomanagement_bot_chat"),
+        InlineKeyboardButton(
+            text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂", url=f"https://t.me/dragomanagement_bot_chat"
+        ),
     ],
     [
         InlineKeyboardButton(
@@ -103,7 +105,6 @@ buttons = [
             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
         ),
     ],
-    
     [
         InlineKeyboardButton(text="ʜᴇʟᴩ & ᴄᴏᴍᴍᴀɴᴅs", callback_data="help_back"),
     ],
@@ -409,7 +410,6 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
                             text="ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"
                         ),
                     ],
-                   
                     [
                         InlineKeyboardButton(text="◁", callback_data="fallen_back"),
                     ],
@@ -428,7 +428,8 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
                             text="📇 𝙐𝙥𝙙𝙖𝙩𝙚𝙨", url=f"https://t.me/dragomanagement_bot"
                         ),
                         InlineKeyboardButton(
-                            text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂", url=f"https://t.me/dragomanagement_bot_chat"
+                            text="𝙎𝙪𝙥𝙥𝙤𝙧𝙩 🫂",
+                            url=f"https://t.me/dragomanagement_bot_chat",
                         ),
                     ],
                     [
@@ -437,12 +438,11 @@ def Fallen_about_callback(update: Update, context: CallbackContext):
                             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                         ),
                     ],
-                
                     [
                         InlineKeyboardButton(
                             text="ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"
                         ),
-                       ],
+                    ],
                     [
                         InlineKeyboardButton(text="◁", callback_data="fallen_"),
                     ],
